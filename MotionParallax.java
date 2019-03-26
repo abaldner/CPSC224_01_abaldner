@@ -31,9 +31,10 @@ class MotionPanel extends JPanel implements ActionListener {
 	protected Timer timer;
 	private int x = 0; // x position
 	private int y = 0; // y position
-	private int radius = 15; // ball radius
+	private int radius = 8; // ball radius
 	private int dx = 2; // increment amount (x coord)
 	private int dy = 2; // increment amount (y coord)
+       
 
 	private int skyX = 2000;
 	private int skyY = 2000;
@@ -97,6 +98,7 @@ class MotionPanel extends JPanel implements ActionListener {
 		timer.start(); // start the timer
 		addMouseListener(new MyMouseListener());
 		addMouseMotionListener(new MyMouseMotionListener());
+                
 	}
 
 	public void actionPerformed(ActionEvent e)
@@ -109,6 +111,8 @@ class MotionPanel extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g); // call superclass's paintComponent
 		
+              
+                
                 //paint all the graphics
 		skyWidth = 1000;
 		skyHeight = 1000;
@@ -165,6 +169,19 @@ class MotionPanel extends JPanel implements ActionListener {
 		leavesWidth = 50;
 		leavesHeight = 80;
 		g.fillRect(leavesX, leavesY, leavesWidth, leavesHeight);
+                
+                g.setColor(Color.black);
+
+                // check for boundaries
+                if (x < radius)			dx = 10;
+                if (x > getWidth() - radius)	dx = -Math.abs(dx);
+                if (y < radius)			dy = 20;
+                if (y > getHeight() - radius)	dy = -Math.abs(dy);
+
+                // adjust ball position
+                x += dx;
+                y += dy;
+                g.fillOval(x - radius, y - radius, radius*2, radius*2);
 		
                 
 		
@@ -187,7 +204,7 @@ class MotionPanel extends JPanel implements ActionListener {
 		}
 
 		public void mouseClicked(MouseEvent e) {
-                    
+                    //changes the local of the object depending on where the mouse clicks
                 
 			System.out.println(e.getX());
 			System.out.println(e.getY());
@@ -207,9 +224,6 @@ class MotionPanel extends JPanel implements ActionListener {
 		}
 
 		public void mouseReleased(MouseEvent e) {
-                    
-                    
-
 		}
 
 		public void mouseEntered(MouseEvent e) {
@@ -220,8 +234,7 @@ class MotionPanel extends JPanel implements ActionListener {
 	}
 
 	private class MyMouseMotionListener implements MouseMotionListener {
-		public void mouseDragged(MouseEvent e) {
-                    
+		public void mouseDragged(MouseEvent e){
 		}
 
 		public void mouseMoved(MouseEvent e) {
