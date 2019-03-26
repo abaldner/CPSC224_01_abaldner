@@ -83,6 +83,11 @@ class MotionPanel extends JPanel implements ActionListener {
         private int arcHeight2;
         private int startAngle2;
         private int arcAngle2;
+        
+        private int bushX = 200;
+	private int bushY = 180;
+	private int bushWidth;
+	private int bushHeight;
 	
 	
 
@@ -150,7 +155,11 @@ class MotionPanel extends JPanel implements ActionListener {
 		stumpWidth = 15;
 		stumpHeight = 30;
 		g.fillRect(stumpX, stumpY, stumpWidth, stumpHeight);
-		
+                
+                g.setColor(Color.gray);
+		bushWidth = 15;
+                bushHeight = 15;
+                g.fillRect(bushX, bushY, bushWidth, bushHeight);
 		
 		g.setColor(Color.GREEN);
 		leavesWidth = 50;
@@ -173,9 +182,13 @@ class MotionPanel extends JPanel implements ActionListener {
 
 	private class MyMouseListener implements MouseListener {
 		public void mousePressed(MouseEvent e) {
+                    
+                    
 		}
 
 		public void mouseClicked(MouseEvent e) {
+                    
+                
 			System.out.println(e.getX());
 			System.out.println(e.getY());
 			
@@ -186,11 +199,17 @@ class MotionPanel extends JPanel implements ActionListener {
 			
 			birdX = mouseX;
 			birdY = mouseY;
+                        
+                        bushX = mouseY ;
+                        bushY = mouseX;
 		
 
 		}
 
 		public void mouseReleased(MouseEvent e) {
+                    
+                    
+
 		}
 
 		public void mouseEntered(MouseEvent e) {
@@ -202,6 +221,7 @@ class MotionPanel extends JPanel implements ActionListener {
 
 	private class MyMouseMotionListener implements MouseMotionListener {
 		public void mouseDragged(MouseEvent e) {
+                    
 		}
 
 		public void mouseMoved(MouseEvent e) {
@@ -235,7 +255,6 @@ class MotionPanel extends JPanel implements ActionListener {
                         leavesY = 95 + (mouseY) /12;
 		}
 		
-
 	}
 
 }
