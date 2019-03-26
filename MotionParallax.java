@@ -66,21 +66,12 @@ class MotionPanel extends JPanel implements ActionListener {
 	private int stumpHeight;
 	
 	private int leavesX = 200;
-	private int leavesY = 500;
+	private int leavesY = 70;
 	private int leavesWidth;
 	private int leavesHeight;
 	
-	/*
-	private int[] Mountain1X = {20};
-	private int[] Mountain1Y = {25};
-	private int Mountain1Width;
-	private int Mountain1Height; 
 	
-	private int Mountain2X = 0;
-	private int Mountain2Y = 100;
-	private int Mountain2Width;
-	private int Mountain2Height; 
-*/
+
 	
 	public MotionPanel() {
 		timer = new Timer(delay, this);
@@ -133,8 +124,8 @@ class MotionPanel extends JPanel implements ActionListener {
 		
 		//g.setColor(Color.green);
 		g.setColor(Color.GREEN);
-		leavesWidth = 5;
-		leavesHeight = 70;
+		leavesWidth = 50;
+		leavesHeight = 100;
 		g.fillRect(leavesX, leavesY, leavesWidth, leavesHeight);
 		
 		
@@ -212,10 +203,10 @@ class MotionPanel extends JPanel implements ActionListener {
 			grassY = 200 + (mouseY) / 12;
 			
 			stumpX = 30 + (mouseX - 300) / 12;
-			stumpY = 190 + (mouseY) / 12;
+			stumpY = 170 + (mouseY) / 12;
                         
-                        leavesX = 30 + (mouseX - 300)/12;
-                        leavesY = 190 + (mouseY) /12;
+                        leavesX = 25 + (mouseX - 300)/12;
+                        leavesY = 70 + (mouseY) /12;
 		}
 		
 
